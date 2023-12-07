@@ -8,6 +8,7 @@ class User < ApplicationRecord
                     uniqueness: true
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  mount_uploader :avatar, AvatarUploader  #画像追加
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
@@ -24,7 +25,7 @@ class User < ApplicationRecord
   # 永続化セッションのためにユーザーをデータベースに記憶する
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    update_attribute(:remember_digest, User.digest(remember_token)) #:image?
     remember_digest
   end
 
@@ -42,6 +43,6 @@ class User < ApplicationRecord
 
   # ユーザーのログイン情報を破棄する
   def forget
-    update_attribute(:remember_digest, nil)
+    update_attribute(:remember_digest, nil) #:image?
   end
 end
