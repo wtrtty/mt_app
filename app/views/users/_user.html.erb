@@ -1,5 +1,9 @@
 <li>
-  <%= gravatar_for user, size: 50 %>
+  <% if @user && @user.avatar? %>
+    <%= image_tag @user.avatar.url, size: 50 %> <!-- ユーザープロフィール画像 -->
+  <% else %>
+    <%= image_tag ("noavatar.png"), size: 50 %> <!-- プロフィール画像未設定時のデフォルト画像 -->
+  <% end %>
   <%= link_to user.name, user %>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, data: { "turbo-method": :delete,

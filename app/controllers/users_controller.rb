@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @avatar = @user.avatar
+    #@profile = @user.profile
   end
 
   def new
@@ -50,7 +52,9 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :avatar,
+      #params.require(:user).permit(:name, :email, :avatar,
+                                   #:password, :password_confirmation)
+      params.require(:user).permit(:id, :name, :email, :avatar, :profile,
                                    :password, :password_confirmation)
     end
 
