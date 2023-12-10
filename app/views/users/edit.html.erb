@@ -21,6 +21,9 @@
       <%= f.label :プロフィール画像 %>
       <%= f.file_field :avatar %>
 
+      <%= f.label :自己紹介%>
+      <%= f.text_area :profile, autocomplete: 'off', :size =>"50x10" %>
+
       <%= f.submit "登録", class: "btn btn-primary" %>
     <% end %>
   </div>

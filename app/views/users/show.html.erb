@@ -6,11 +6,14 @@
         <% if @user.avatar? %>
           <%= image_tag @user.avatar.url %>
         <% else %>
-          <%= image_tag ("noavatar.png") %>
+          <%= image_tag "8d27ad3552fd86901f4976429ad22ce2.png" %>
         <% end %>
 
         <%= @user.name %>
+
       </h1>
+      <p>自己紹介</p>
+      <p><%= @user.profile %></p>
     </section>
   </aside>
 </div>

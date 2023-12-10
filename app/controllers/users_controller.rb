@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @avatar = @user.avatar
+    @user_avatar = @user.avatar
+    @user_profile = @user.profile  # ここでprofileメソッドを呼び出す
     #@profile = @user.profile
   end
 
