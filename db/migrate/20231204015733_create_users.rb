@@ -1,11 +1,15 @@
 class CreateUsers < ActiveRecord::Migration[7.1]
   def change
-    add_column :users, :name, :string, :email, :string
-    add_column :users, :gender, :integer, null: false, default: 0
-    add_column :users, :birthday, :date
-    add_column :users, :prefecture, :integer, null: false, default: 1
+    create_table :users do |t|
+      t.string :name
+      t.string :email
+      t.string :gender, null: false, default: 0
+      t.date :birthday
+      t.text :profile, limit: 800
+      t.string :avatar
+      t.integer :prefecture, null: false, default: 1
 
-    add_column :users, timestamps
+      t.timestamps default: -> { 'CURRENT_TIMESTAMP' }, null: false
     end
   end
 end

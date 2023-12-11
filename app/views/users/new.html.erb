@@ -18,6 +18,12 @@
       <%= f.label :パスワード確認用%>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+      <%= f.label :性別 %>
+      <%= f.select :gender, {'男性': '男', '女性': '女'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+
+      <%= f.label :誕生日 %>
+      <%= f.date_field :birthday %>
+
       <%= f.label :プロフィール画像 %>
       <%= f.file_field :avatar %>
 
