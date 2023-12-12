@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_030409) do
     t.date "birthday"
     t.text "profile", limit: 800
     t.string "avatar"
-    t.integer "prefecture", default: 1, null: false
+    t.string "live", default: "未設定", null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.string "password_digest"

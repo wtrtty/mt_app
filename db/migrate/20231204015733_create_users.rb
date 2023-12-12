@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.date :birthday
       t.text :profile, limit: 800
       t.string :avatar
-      t.integer :prefecture, null: false, default: 1
+      t.string :live, null: false, default: '未設定'
 
       t.timestamps default: -> { 'CURRENT_TIMESTAMP' }, null: false
     end

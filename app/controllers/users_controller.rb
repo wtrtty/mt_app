@@ -9,9 +9,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_avatar = @user.avatar
-    @user_profile = @user.profile  # ここでprofileメソッドを呼び出す
-    #@profile = @user.profile
   end
 
   def new
@@ -56,7 +53,7 @@ class UsersController < ApplicationController
       #params.require(:user).permit(:name, :email, :avatar,
                                    #:password, :password_confirmation)
       params.require(:user).permit(:name, :email, :avatar, :profile, :gender,
-                                   :birthday, :prefecture, :password, :password_confirmation)
+                                   :birthday, :live, :password, :password_confirmation)
     end
 
     # beforeフィルタ
