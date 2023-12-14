@@ -16,7 +16,7 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.label :居住地 %>
-      <%= f.collection_select :live, JpPrefecture::Prefecture.all, :name, :name %>
+      <%= f.collection_select :live, JpPrefecture::Prefecture.all, :name, :name, { include_blank: '選択してください'} %>
 
       <%= f.label :プロフィール画像 %>
       <%= f.file_field :avatar %>

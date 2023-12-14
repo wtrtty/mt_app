@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
+    @user = User.all
   end
 
   def show
@@ -50,9 +51,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      #params.require(:user).permit(:name, :email, :avatar,
-                                   #:password, :password_confirmation)
-      params.require(:user).permit(:name, :email, :avatar, :profile, :gender,
+      params.require(:user).permit(:name, :email, :avatar, :profile, :gender, :age,
                                    :birthday, :live, :password, :password_confirmation)
     end
 

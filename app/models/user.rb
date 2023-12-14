@@ -7,7 +7,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: true, length: { minimum: 4 }, allow_nil: true
   mount_uploader :avatar, AvatarUploader  #画像追加
 
 
@@ -16,6 +16,18 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+
+  #年齢設定
+  def age
+    d1=self.birthday.strftime("%Y%m%d").to_i
+    d2=Date.today.strftime("%Y%m%d").to_i
+    return (d2 - d1) / 10000
+  end
+
+  #画像アップ
+  def avatar
+
   end
 
   # ランダムなトークンを返す

@@ -19,7 +19,7 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.label :居住地 %>
-      <%= f.collection_select :live, JpPrefecture::Prefecture.all, :name, :name %>
+      <%= f.collection_select :live, JpPrefecture::Prefecture.all, :name, :name, { include_blank: '選択してください'} %>
 
       <%= f.label :性別 %>
       <%= f.select :gender, {'男性': '男', '女性': '女'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
