@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.text :profile, limit: 800
       t.string :avatar
       t.string :live, null: false, default: '未設定'
+
+      t.timestamps
     end
   end
 end

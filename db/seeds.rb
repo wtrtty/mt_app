@@ -6,17 +6,40 @@ User.create!(name:  "ExampleUser",
              email: "example@railstutorial.org",
              password:              "foobar",
              password_confirmation: "foobar",
+             gender:                '女性',
+             birthday:              Date.parse('1990-01-01'),
+             profile:               'よろしく',
+             live:                  '東京',
              admin: true)
 
-# 追加のユーザーをまとめて生成する
-99.times do |n|
-  name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+# 男性のユーザーをまとめて生成する
+50.times do |n|
+  name = "male#{n+1}"
+  email = "male-#{n+1}@samplemtapp.org"
   password = "password"
-  User.create!(name:  name,
-               email: email,
+  User.create!(name:                  name,
+               email:                 email,
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               gender:                '男性',
+               birthday: Faker::Date.birthday(min_age: 18, max_age: 50),
+               profile:  Faker::Lorem.sentence,
+               live:     Faker::Address.state)
+end
+
+# 女性のユーザーをまとめて生成する
+50.times do |n|
+  name = "female#{n+1}"
+  email = "female-#{n+1}@samplemtapp.org"
+  password = "password"
+  User.create!(name:                  name,
+               email:                 email,
+               password:              password,
+               password_confirmation: password,
+               gender:                '女性',
+               birthday: Faker::Date.birthday(min_age: 18, max_age: 50),
+               profile:  Faker::Lorem.sentence,
+               live:     Faker::Address.state)
 end
 
 

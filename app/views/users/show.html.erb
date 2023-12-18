@@ -10,10 +10,16 @@
         <% end %>
 
       </h1>
+      <h1><%= @user.name%></h1>
       <p><%= @user.live %>
       <%= @user.age %>歳</p>
       <p>自己紹介</p>
       <p><%= @user.profile %></p>
+      <p><!-- %= @user.gender % --></p>
+      <h1><% if @user != current_user %>
+            <%= link_to "いいね！", likes_path({user_id:@user.id,reaction: "like"}), data: { "turbo-method": :post} %>
+          <% end %>
+      </h1>
     </section>
   </aside>
 </div>

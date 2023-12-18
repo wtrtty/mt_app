@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
-    @user = User.all
+    # 性別の異なるユーザーを取得（自分以外）
+    @users = User.where.not(id: current_user.id).where.not(gender: current_user.gender).paginate(page: params[:page]).order("created_at DESC")
+    #render json: { status: 200, users: users }
   end
 
   def show
