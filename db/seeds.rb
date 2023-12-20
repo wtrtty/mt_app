@@ -42,6 +42,20 @@ end
                live:     Faker::Address.state)
 end
 
+# ユーザーフォローのリレーションシップを作成する
+users = User.all
+user  = users.first
+active_likes= users[2..40]
+passive_likes = users[13..50]
+active_likes.each { |to_user| user.do_like(to_user) }
+passive_likes.each { |from_user| from_user.do_like(user) }
+
+#users = User.all
+#user  = users.first
+#following = users[2..50]
+#followers = users[3..40]
+#following.each { |followed| user.follow(followed) }
+#followers.each { |follower| follower.follow(user) }
 
 # Examples:
 #

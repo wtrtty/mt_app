@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :active_likes, :passive_likes]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
@@ -47,6 +47,20 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_url, status: :see_other
+  end
+
+  def active_likes
+    @title = "sent_like"
+    @user  = User.find(params[:id])
+    @users = @user.active_likes.paginate(page: params[:page])
+    render 'show_do_like'
+  end
+
+  def passive_likes
+    @title = "receive_like"
+    @user  = User.find(params[:id])
+    @users = @user.passive_likes.paginate(page: params[:page])
+    render 'show_do_like'
   end
 
   private

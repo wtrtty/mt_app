@@ -15,9 +15,13 @@ class User < ApplicationRecord
 
   #like
   has_many :likes_from, class_name: "Like", foreign_key: :from_user_id, dependent: :destroy
+  #has_many :active_relationships,  class_name:  "Relationship", foreign_key: "follower_id", dependent:   :destroy
   has_many :likes_to, class_name: "Like", foreign_key: :to_user_id, dependent: :destroy
+  #has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
   has_many :active_likes, through: :likes_from, source: :to_user  # 自分からのいいね
+  #has_many :following, through: :active_relationships,  source: :followed
   has_many :passive_likes, through: :likes_to, source: :from_user # 相手からのいいね
+  #has_many :followers, through: :passive_relationships, source: :follower
 
   #チャットルーム
   has_many :chat_room_users
@@ -72,4 +76,31 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil) #:image?
   end
+
+  # ユーザーをlikeする
+  def do_like(other_user)
+    active_likes << other_user unless self == other_user
+  end
+  # ユーザーをフォローする
+  #def follow(other_user)
+   # following << other_user unless self == other_user
+  #end
+
+  # ユーザーのlikeを削除する
+  def delete_like(other_user)
+    active_likes.delete(other_user)
+  end
+  # ユーザーをフォロー解除する
+  #def unfollow(other_user)
+   # following.delete(other_user)
+  #end
+
+  # 現在のユーザーが他のユーザーをlikeしていればtrueを返す
+  def active_likes?(other_user)
+    active_likes.include?(other_user)
+  end
+  # 現在のユーザーが他のユーザーをフォローしていればtrueを返す
+  #def following?(other_user)
+   # following.include?(other_user)
+  #end
 end

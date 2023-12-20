@@ -1,0 +1,15 @@
+<% @user ||= current_user %>
+<div class="stats">
+  <% if @user == current_user %>
+    <a href="<%= active_likes_user_path(@user) %>">
+      <strong id="送ったいいね！" class="stat"></strong>
+      送ったいいね！
+    </a>
+  <% end %>
+  <% if @user == current_user %>
+    <a href="<%= passive_likes_user_path(@user) %>">
+      <strong id="受け取ったいいね！" class="stat"> </strong>
+    </a>
+  <% end %>
+  <a> <%= @user.passive_likes.count %> 受け取ったいいね！</a>
+</div>

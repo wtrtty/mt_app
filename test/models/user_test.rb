@@ -68,4 +68,18 @@ def setup
   test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?('')
   end
+
+  test "should follow and unfollow a user" do
+    michael = users(:michael)
+    archer  = users(:archer)
+    assert_not michael.active_likes?(archer)
+    michael.do_like(archer)
+    assert michael.active_likes?(archer)
+    assert archer.passive_likes.include?(michael)
+    michael.delete_like(archer)
+    assert_not michael.active_likes?(archer)
+    # ユーザーは自分自身をフォローできない
+    michael.do_like(michael)
+    assert_not michael.active_likes?(michael)
+  end
 end

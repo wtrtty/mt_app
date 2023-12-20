@@ -1,0 +1,4 @@
+<%= form_with(model: current_user.likes_from.find_by(to_user: @user),
+              html: { method: :delete }) do |f| %>
+  <%= f.submit "いいね！を取り消す", class: "btn" %>
+<% end %>

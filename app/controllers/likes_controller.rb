@@ -8,6 +8,9 @@ class LikesController < ApplicationController
   end
 
   def create
+    #user = User.find(params[:followed_id])
+    #current_user.follow(user)
+    #redirect_to user
     is_matched = false # マッチングが成立したかどうかのフラグ
 
     active_like = Like.find_or_initialize_by(like_params)

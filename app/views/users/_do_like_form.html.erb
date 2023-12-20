@@ -1,0 +1,9 @@
+<% unless current_user?(@user) %>
+  <div id="like_form">
+  <% if current_user.active_likes?(@user) %>
+    <%= render 'delete_like' %>
+  <% else %>
+    <%= render 'do_like' %>
+  <% end %>
+  </div>
+<% end %>

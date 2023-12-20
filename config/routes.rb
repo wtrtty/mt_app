@@ -7,13 +7,18 @@ Rails.application.routes.draw do
   get  "/contact", to: "static_pages#contact"
 
   get  "/signup",  to: "users#new"
-  resources :users
+  resources :users do
+    member do
+      get :active_likes, :passive_likes
+      #get :following, :followers
+    end
+  end
 
   get    "/login",   to: "sessions#new"
   post   "/login",   to: "sessions#create"
   delete "/logout",  to: "sessions#destroy"
 
-  resources :likes, only: [:index, :create]
+  resources :likes, only: [:index, :create, :destroy]
   resources :chat_rooms, only: [:index, :show]
   resources :messages, only: [:create]
 end

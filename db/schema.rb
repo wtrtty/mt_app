@@ -28,6 +28,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_15_073247) do
     t.integer "to_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["from_user_id", "to_user_id"], name: "index_likes_on_from_user_id_and_to_user_id", unique: true
+    t.index ["from_user_id"], name: "index_likes_on_from_user_id"
+    t.index ["to_user_id"], name: "index_likes_on_to_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
