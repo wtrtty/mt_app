@@ -4,8 +4,8 @@ Faker::Config.locale = :ja
 # メインのサンプルユーザーを1人作成する
 User.create!(name:  "ExampleUser",
              email: "example@railstutorial.org",
-             password:              "foobar",
-             password_confirmation: "foobar",
+             password:              "tawa",
+             password_confirmation: "tawa",
              gender:                '女性',
              birthday:              Date.parse('1990-01-01'),
              profile:               'よろしく',
@@ -16,7 +16,7 @@ User.create!(name:  "ExampleUser",
 50.times do |n|
   name = "male#{n+1}"
   email = "male-#{n+1}@samplemtapp.org"
-  password = "password"
+  password = "tawa"
   User.create!(name:                  name,
                email:                 email,
                password:              password,
@@ -31,7 +31,7 @@ end
 50.times do |n|
   name = "female#{n+1}"
   email = "female-#{n+1}@samplemtapp.org"
-  password = "password"
+  password = "tawa"
   User.create!(name:                  name,
                email:                 email,
                password:              password,

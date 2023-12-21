@@ -5,8 +5,17 @@ class UsersController < ApplicationController
 
   def index
     # 性別の異なるユーザーを取得（自分以外）
-    @users = User.where.not(id: current_user.id).where.not(gender: current_user.gender).paginate(page: params[:page]).order("created_at DESC")
+    @users = User.where.not(gender: current_user.gender).order("created_at DESC")
+    #.where.not(id: current_user.id)自分以外  .paginate(page: params[:page])ページネーション
     #render json: { status: 200, users: users }
+  end
+
+  def avatar
+    if @user && @user.avatar.present?
+     image_tag @user.avatar.url
+    else
+      image_tag "8d27ad3552fd86901f4976429ad22ce2.png"
+    end
   end
 
   def show

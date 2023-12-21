@@ -1,0 +1,6 @@
+<%= turbo_stream.update "do_like_form" do %>
+  <%= render partial: "users/unlike" %>
+<% end %>
+<%= turbo_stream.update "passive_likes" do %>
+  <%= @user.passive_likes.count %>
+<% end %>

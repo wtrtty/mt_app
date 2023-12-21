@@ -43,11 +43,6 @@ class User < ApplicationRecord
     return (d2 - d1) / 10000
   end
 
-  #画像アップ
-  def avatar
-
-  end
-
   # ランダムなトークンを返す
   def User.new_token
     SecureRandom.urlsafe_base64

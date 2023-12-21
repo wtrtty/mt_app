@@ -6,10 +6,11 @@
       送ったいいね！
     </a>
   <% end %>
-  <% if @user == current_user %>
-    <a href="<%= passive_likes_user_path(@user) %>">
+  
+  <a href="<%= passive_likes_user_path(@user) %>">
+    <% if @user === current_user %>
       <strong id="受け取ったいいね！" class="stat"> </strong>
-    </a>
-  <% end %>
-  <a> <%= @user.passive_likes.count %> 受け取ったいいね！</a>
+    <% end %>
+    受け取ったいいね！<%= @user.passive_likes.count %>
+  </a>
 </div>

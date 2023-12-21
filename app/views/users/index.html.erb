@@ -1,12 +1,12 @@
 <% provide(:title, 'All users') %>
 <h1>お相手のユーザー</h1>
 
-<%= will_paginate %>
+<!--%= will_paginate %-->
 
 <ul class="users">
   <% @users.each do |user| %>
-    <%= render user %>
+    <%= render user unless current_user.active_likes?(user) %>
   <% end %>
 </ul>
 
-<%= will_paginate %>
+<!--%= will_paginate %-->
