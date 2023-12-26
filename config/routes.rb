@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get :active_likes, :passive_likes
       #get :following, :followers
+      get :match
     end
   end
 
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   post   "/login",   to: "sessions#create"
   delete "/logout",  to: "sessions#destroy"
 
-  resources :likes, only: [:index, :create, :destroy]
-  resources :chat_rooms, only: [:index, :show]
-  resources :messages, only: [:create]
+  resources :likes, only: [:index, :create, :destroy, :match]
+  resources :rooms, only: [:index, :show]
+  resources :chats, only: [:show, :create]
 end

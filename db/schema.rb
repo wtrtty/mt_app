@@ -10,15 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_15_073247) do
-  create_table "chat_room_users", force: :cascade do |t|
-    t.integer "chat_room_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "chat_rooms", force: :cascade do |t|
+ActiveRecord::Schema[7.1].define(version: 2023_12_21_084230) do
+  create_table "chats", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,10 +29,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_15_073247) do
     t.index ["to_user_id"], name: "index_likes_on_to_user_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.integer "chat_room_id", null: false
-    t.integer "user_id", null: false
-    t.string "content", null: false
+  create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

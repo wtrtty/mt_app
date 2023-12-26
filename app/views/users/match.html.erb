@@ -1,0 +1,10 @@
+<% provide(:title, 'MATCH users') %>
+<h1>マッチングしたお相手</h1>
+
+<ul class="users">
+  <% @users.each do |user| %>
+    <%= render user if current_user.active_likes?(user) && user.active_likes?(current_user) %>
+  <% end %>
+</ul>
+
+<!--% if current_user.active_likes?(@user) && @user.active_likes?(current_user) %-->   <!-- マッチしたユーザー -->

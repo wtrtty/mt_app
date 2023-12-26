@@ -1,16 +1,20 @@
 <% @user ||= current_user %>
 <div class="stats">
-  <% if @user == current_user %>
+  <% if @user === current_user %>
     <a href="<%= active_likes_user_path(@user) %>">
       <strong id="送ったいいね！" class="stat"></strong>
       送ったいいね！
     </a>
   <% end %>
   
-  <a href="<%= passive_likes_user_path(@user) %>">
-    <% if @user === current_user %>
+  <% if @user === current_user %>
+    <a href="<%= passive_likes_user_path(@user) %>">
       <strong id="受け取ったいいね！" class="stat"> </strong>
-    <% end %>
-    受け取ったいいね！<%= @user.passive_likes.count %>
-  </a>
+      受け取ったいいね！<%= @user.passive_likes.count %>
+    </a>
+  <% else %>
+    <a>
+      受け取ったいいね！<%= @user.passive_likes.count %>
+    </a>
+  <% end %>
 </div>

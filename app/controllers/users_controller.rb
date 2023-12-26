@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :active_likes, :passive_likes]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :active_likes, :passive_likes, :match]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
   def index
-    # 性別の異なるユーザーを取得（自分以外）
+    # 性別の異なるユーザーを取得
     @users = User.where.not(gender: current_user.gender).order("created_at DESC")
     #.where.not(id: current_user.id)自分以外  .paginate(page: params[:page])ページネーション
     #render json: { status: 200, users: users }
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def avatar
     if @user && @user.avatar.present?
-     image_tag @user.avatar.url
+     image_tag @user.avatar
     else
       image_tag "8d27ad3552fd86901f4976429ad22ce2.png"
     end
@@ -59,17 +59,21 @@ class UsersController < ApplicationController
   end
 
   def active_likes
-    @title = "sent_like"
+    @title = "あなたがいいね！したお相手"
     @user  = User.find(params[:id])
     @users = @user.active_likes.paginate(page: params[:page])
     render 'show_do_like'
   end
 
   def passive_likes
-    @title = "receive_like"
+    @title = "お相手からのいいね！"
     @user  = User.find(params[:id])
     @users = @user.passive_likes.paginate(page: params[:page])
     render 'show_do_like'
+  end
+
+  def match
+    @users = User.where.not(gender: current_user.gender).order("created_at DESC")
   end
 
   private

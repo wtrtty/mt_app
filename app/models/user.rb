@@ -24,10 +24,9 @@ class User < ApplicationRecord
   #has_many :followers, through: :passive_relationships, source: :follower
 
   #チャットルーム
-  has_many :chat_room_users
-  has_many :chat_rooms, through: :chat_room_users
-
-  has_many :messages
+  has_many :user_rooms
+  has_many :chats
+  has_many :rooms, through: :user_rooms
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)

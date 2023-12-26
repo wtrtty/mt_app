@@ -10,6 +10,7 @@ class LikesController < ApplicationController
   def create
     @user = User.find(params[:to_user_id])
     current_user.do_like(@user)
+    flash[:success] = "いいね！しました！"
     redirect_to @user
   end
 

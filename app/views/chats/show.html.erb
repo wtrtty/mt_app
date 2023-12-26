@@ -1,0 +1,24 @@
+<h1 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>">
+<%= @user.name %> さんとのメッセージ</h1>
+
+<div class="message" style="width: 400px;">
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+      <p style="text-align: right;"><%= chat.message %></p>
+    <% else %>
+      <p style="text-align: left;"><%= chat.message %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="errors">
+  <!--%= render "shared/chat_error", obj: @chat %-->
+</div>
+
+<%= form_with model: @chat, data: {remote: true} do |f| %>
+  <div style="display: flex; align-items: center;">
+    <%= f.text_field :message, placeholder: "メッセージを入力", style: "width: 100%;" %>
+    <%= f.hidden_field :room_id %>
+    <%= f.submit "送信", style: "margin-left: 5px; width: 70px;" %>
+  </div>
+<% end %>
