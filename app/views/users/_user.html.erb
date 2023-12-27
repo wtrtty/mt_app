@@ -1,8 +1,8 @@
 <li>
   <% if user.avatar.present? %>
-    <%= image_tag user.avatar.url, size: 50 %> <!-- ユーザープロフィール画像 -->
+    <%= image_tag asset_path(user.avatar.url), size: 60 %> <!-- ユーザープロフィール画像 -->
   <% else %>
-    <%= image_tag "8d27ad3552fd86901f4976429ad22ce2.png", size: 50 %> <!-- プロフィール画像未設定時のデフォルト画像 -->
+    <%= image_tag asset_path("8d27ad3552fd86901f4976429ad22ce2.png"), size: 60 %> <!-- プロフィール画像未設定時のデフォルト画像 -->
   <% end %>
   <%= link_to user.name, user %>
 

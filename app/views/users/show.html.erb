@@ -3,10 +3,10 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <% if @user && @user.avatar.present? %>
-          <%= image_tag @user.avatar.url %>
+        <% if @user.avatar.present? %>
+          <%= image_tag asset_path(@user.avatar.url), size: 200 %> <!-- ユーザープロフィール画像 -->
         <% else %>
-          <%= image_tag "8d27ad3552fd86901f4976429ad22ce2.png" %>
+          <%= image_tag asset_path("8d27ad3552fd86901f4976429ad22ce2.png"), size: 200 %> <!-- プロフィール画像未設定時のデフォルト画像 -->
         <% end %>
       </h1>
       <h1>
@@ -21,7 +21,6 @@
       <%= @user.age %>歳</p>
       <p>自己紹介</p>
       <p><%= @user.profile %></p>
-      <!--p>< %= @user.gender % ></p-->
 
       <!-- like buttun -->
       <%= render 'do_like_form' if logged_in? %>

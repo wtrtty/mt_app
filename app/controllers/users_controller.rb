@@ -10,14 +10,6 @@ class UsersController < ApplicationController
     #render json: { status: 200, users: users }
   end
 
-  def avatar
-    if @user && @user.avatar.present?
-     image_tag @user.avatar
-    else
-      image_tag "8d27ad3552fd86901f4976429ad22ce2.png"
-    end
-  end
-
   def show
     @user = User.find(params[:id])
   end
@@ -56,6 +48,14 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User deleted"
     redirect_to users_url, status: :see_other
+  end
+
+  def avatar
+    if @user.avatar.present?
+      image_tag @user.avatar.url #ユーザープロフィール画像
+    else
+      image_tag "8d27ad3552fd86901f4976429ad22ce2.png" #プロフィール画像未設定時のデフォルト画像
+    end
   end
 
   def active_likes
