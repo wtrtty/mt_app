@@ -18,7 +18,6 @@ gem "faker"
 gem "will_paginate",             "3.3.1"
 gem "bootstrap-will_paginate",   "1.0.0"
 gem 'carrierwave'
-gem 'mini_magick'
 gem 'image_processing'
 gem 'jp_prefecture' #都道府県
 

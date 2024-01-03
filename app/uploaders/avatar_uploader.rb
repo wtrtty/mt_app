@@ -1,5 +1,5 @@
 class AvatarUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+  include CarrierWave
 
   storage :file
 
@@ -15,7 +15,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-  process resize_to_fit: [100, 100]
+  #画像のリサイズ process resize_to_fit: [100, 100]
 end
 
 #noavatarファイル
