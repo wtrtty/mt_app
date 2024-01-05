@@ -19,6 +19,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    # ファイルがアップロードされるディレクトリが存在しない場合は作成する
+    directory_path = Rails.root.join('public', 'uploads', 'tmp')
+    FileUtils.mkdir_p(directory_path)
+
     @user = User.new(user_params)
     if @user.save
       reset_session
