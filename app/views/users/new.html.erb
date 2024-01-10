@@ -28,7 +28,7 @@
       <%= f.date_field :birthday, required: true %>
 
       <%= f.label :avatar, 'プロフィール画像' %>
-      <%= f.file_field :avatar %>
+      <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png" %>
 
       <%= f.label :profile, '自己紹介' %>
       <%= f.text_area :profile, autocomplete: 'off', :size =>"50x10" %>

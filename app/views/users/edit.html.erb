@@ -16,10 +16,10 @@
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <%= f.label :live, '居住地' %>
-      <%= f.collection_select :live, JpPrefecture::Prefecture.all, :name, :name, { include_blank: '選択してください'} %>
+      <%= f.collection_select :live, JpPrefecture::Prefecture.all, :name, :name, { include_blank: '選択してください'}, { selected: @user.live } %>
 
       <%= f.label :avatar, 'プロフィール画像' %>
-      <%= f.file_field :avatar %>
+      <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png" %>
 
       <%= f.label :profile, '自己紹介' %>
       <%= f.text_area :profile, autocomplete: 'off', :size =>"50x10" %>

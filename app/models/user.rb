@@ -11,7 +11,12 @@ class User < ApplicationRecord
   validates :birthday,  presence: true
   validates :live,  presence: true
 
-  mount_uploader :avatar, AvatarUploader  #画像追加
+  #mount_uploader :avatar, AvatarUploader  #画像追加
+  has_one_attached :avatar  #画像のアップロード枚数を指定
+  validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png],
+                                      message: "must be a valid image format" },
+                             size: { less_than: 5.megabytes,
+                                      message:   "should be less than 5MB" }
 
   #like
   has_many :likes_from, class_name: "Like", foreign_key: :from_user_id, dependent: :destroy
