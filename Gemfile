@@ -21,6 +21,10 @@ gem 'image_processing'
 gem "active_storage_validations"
 gem 'jp_prefecture' #都道府県
 
+group :production do
+  gem "aws-sdk-s3", "1.114.0", require: false
+end
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
