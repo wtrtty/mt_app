@@ -36,9 +36,6 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
-
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   # config.action_cable.url = "wss://example.com/cable"
@@ -95,6 +92,7 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  # アップロードされたファイルをAWSに保存する
-  config.active_storage.service = :amazon
+  #config.active_storage.service = :local  # アップロードされたファイルをローカルに保存する
+  config.active_storage.service = :amazon  # アップロードされたファイルをAWSに保存する
+  #config.aws_region = 'your_region'        # AWSリージョンを指定
 end
