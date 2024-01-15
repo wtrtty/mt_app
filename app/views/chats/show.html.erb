@@ -3,7 +3,7 @@
 
 <div class="message" style="width: 400px;">
   <% @chats.each do |chat| %>
-    <%= link_to @user.avatar, chat.user %>
+    <%= link_to @user.name, chat.user %>
     <% if chat.user_id == current_user.id %>
       <p style="text-align: right;"><%= chat.message %></p>
     <% else %>
