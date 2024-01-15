@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     # 性別の異なるユーザーを取得
     @users = User.where.not(gender: current_user.gender).order("created_at DESC")
     #.where.not(id: current_user.id)自分以外  .paginate(page: params[:page])ページネーション
-    #render json: { status: 200, users: users }
   end
 
   def show
