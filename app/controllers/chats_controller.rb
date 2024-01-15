@@ -19,7 +19,14 @@ class ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.new(chat_params)
-    render :validater unless @chat.save
+    respond_to do |format|
+      if @chat.save
+        format.turbo_stream
+      else
+        format.turbo_stream { render :validater }
+      end
+    end
+    #render :validater unless @chat.save
   end
 
   private
