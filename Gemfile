@@ -25,6 +25,10 @@ group :production do
   gem "aws-sdk-s3", require: false
 end
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end

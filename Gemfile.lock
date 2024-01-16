@@ -238,6 +238,7 @@ GEM
     parser (3.3.0.3)
       ast (~> 2.4.1)
       racc
+    pg (1.5.4)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -421,6 +422,7 @@ DEPENDENCIES
   jp_prefecture
   minitest (= 5.18.0)
   minitest-reporters (= 1.6.0)
+  pg
   puma (>= 5.0)
   rails (~> 7.1.2)
   rails-controller-testing (= 1.0.5)
