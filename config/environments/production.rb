@@ -18,4 +18,5 @@ Rails.application.configure do
 
   #config.active_storage.service = :local  # アップロードされたファイルをローカルに保存する
   config.active_storage.service = :amazon  # アップロードされたファイルをAWSに保存する
+  host = 'https://radiant-caverns-89371-50a7d542793d.herokuapp.com'  #Heroku設定
 end
