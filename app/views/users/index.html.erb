@@ -1,7 +1,7 @@
 <% provide(:title, 'All users') %>
 <h1>お相手のユーザー</h1>
 
-<ul class="users">
+<ul class="users" style="margin: 0 auto;">
   <% @users.each do |user| %>
     <%= render user unless current_user.active_likes?(user) %>
   <% end %>

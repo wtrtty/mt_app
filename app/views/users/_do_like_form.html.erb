@@ -1,5 +1,5 @@
 <% unless current_user?(@user) %>
-  <div id="like_form">
+  <div id="like_form" style="width:300px; margin: 0 auto;">
   <% if current_user.active_likes?(@user) %>
     <%= render 'unlike' %>
   <% else %>

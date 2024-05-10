@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   get  "/help",    to: "static_pages#help"
   get  "/about",   to: "static_pages#about"
   get  "/contact", to: "static_pages#contact"
+  get  "/base_info", to: "static_pages#base_info"
+  get  "/hobby", to: "static_pages#hobby"
 
   get  "/signup",  to: "users#new"
   resources :users do
     member do
       get :active_likes, :passive_likes
-      #get :following, :followers
+     #get :following,    :followers
       get :match
     end
   end

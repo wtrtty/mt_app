@@ -1,0 +1,105 @@
+.head-right {
+  display: flex;
+  font-size: 25px;
+  margin: 0;
+  padding: 25px 10px 0 0;
+  list-style: none;
+  align-items: center;
+}
+
+.head-right li {
+  margin-right: 15px;
+}
+
+.head-right li:last-child {
+  margin-right: 0;
+}
+
+.page-title{
+  color: #CC0033;
+  -webkit-text-stroke: 2px brack;
+  text-shadow: 0px 1px 4px #23430C;
+  font-size:30px;
+  text-align:center
+  }
+  
+.hole1 {
+  background-image: url("back1.jpg");
+  background-size: cover;
+  background-position: bottom -200px right 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  background-color: #D7EEFF;
+  background-attachment: fixed;
+  height: 100%;
+  min-height: max-content;
+  padding: 20px;
+  align-items: stretch;
+}
+
+.e1 {
+  display: grid;
+  gap: 250px;
+  justify-content: center;
+}
+
+.border-radius1,
+.border-radius2,
+.border-radius3,
+.border-radius4 {
+  width: 600px;
+  height: 300px;
+  border-radius: 50%;
+  padding: 20px;
+  background-color: #990000;
+  margin-bottom: 20px;
+  text-align: center;
+  transform: translate(0, 200px);
+  animation-name:fadeUpAnime;
+  animation-duration:1.2s;
+  animation-fill-mode:forwards;
+  opacity:0;
+}
+
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+  transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+  transform: translateY(0);
+  }
+}
+
+.border-radius1 p,
+.border-radius2 p,
+.border-radius3 p,
+.border-radius4 p {
+  color: #FFFFFF;
+  font-size:28px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.reason{
+font-size:50px;
+color:#99FFFF;
+text-align: center;
+}
+
+.border-radius1 {
+margin-top:60px;
+}
+
+.border-radius4 {
+margin-bottom:200px;
+}
