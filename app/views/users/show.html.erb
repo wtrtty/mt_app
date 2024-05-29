@@ -4,7 +4,7 @@
     <section class="user_info">
       <h1>
         <% if @user && @user.avatar.attached? %>
-          <%= image_tag @user.avatar, size: "300x360" %> <!-- ユーザープロフィール画像 -->
+          <%= image_tag @user.avatar, size: "340x360" %> <!-- ユーザープロフィール画像 -->
         <% else %>
           <%= image_tag "8d27ad3552fd86901f4976429ad22ce2.png", size: "300x270", style: "border-radius: 6px;" %> <!-- プロフィール画像未設定時のデフォルト画像 -->
         <% end %>

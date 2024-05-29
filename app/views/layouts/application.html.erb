@@ -13,11 +13,13 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
+      <div class="container-in">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer', style: "z-indez:100;"%>
       <!--↓開発者用デバックツール↓-->
       <!--%= debug(params) if Rails.env.development? %-->
     </div>
